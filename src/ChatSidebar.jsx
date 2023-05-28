@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './ChatSidebar.css'; // CSS file for styling
+import ChatMessage from './ChatMessage';
 
 const ChatSidebar = () => {
   const [messages, setMessages] = useState([]);
@@ -37,16 +38,10 @@ const ChatSidebar = () => {
         <h2>Chat</h2>
       </div>
       <div className="message-list">
-        {messages.map((message, index) => (
-          <div className="message" key={index}>
-            <div className="avatar">{message.sender[0]}</div>
-            <div className="message-content">
-              <p>{message.text}</p>
-              <span className="timestamp">{message.timestamp}</span>
-            </div>
-          </div>
-        ))}
-      </div>
+  {messages.map((message, index) => (
+    <ChatMessage key={index} message={message} />
+  ))}
+</div>
       <div className="message-input">
         <input
           type="text"
